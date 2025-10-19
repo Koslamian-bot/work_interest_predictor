@@ -121,10 +121,8 @@ Predicted Social Weakness: Maybe
 
 ## 🧑‍💻 Author
 
-**Ravi Raahul S R**
-B.Tech Information Technology
-Rajalakshmi Engineering College
-Project developed as part of the **Model Lab Exam**
+**Ravi Raahul**
+aka ROWIN
 
 ---
 
