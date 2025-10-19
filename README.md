@@ -1,66 +1,134 @@
-# POAI Project
+# 🧠 Mental Health Prediction using Decision Tree Classifier
 
-This repository contains a small machine learning project for a course (POAI) that explores models and data related to mental health and music genre classification.
+## 📋 Overview
 
-## Repository contents
+This project predicts a person’s **Work Interest** and **Social Weakness** based on their personal and behavioral traits such as gender, country, occupation, mood swings, and days spent indoors.
 
-- `Mental Health Dataset.csv` - CSV dataset related to mental health (used by experiments).
-- `music_genre.csv` - CSV dataset for music genre classification experiments.
-- `health_tester.joblib` - A saved model or artifact (joblib format).
-- `test.py` - A small script used to test or run the model.
-- `desc.ipynb` - Description and exploratory notebook.
-- `dt.dot`, `modelvis.dot` - Graphviz DOT files (model visualizations).
-- `requirements.txt` - Python dependencies used by the project.
+It uses a **Decision Tree Classifier** built with **Scikit-learn** and demonstrates a full machine learning pipeline — from data preprocessing to model saving, loading, and real-time prediction.
 
-## Project summary
+---
 
-The project explores preprocessing, modelling, and evaluation for classification tasks. It includes notebooks and scripts to reproduce training and inference steps, plus visualizations exported as DOT files.
+## 🚀 Features
 
-## Setup
+* Loads and preprocesses dataset using **Pandas**
+* Encodes categorical data using **LabelEncoder**
+* Trains a **Decision Tree Classifier** model
+* Exports and saves the trained model using **Joblib**
+* Visualizes the trained model using **Graphviz**
+* Loads the model for real-time predictions
+* Displays predictions as **human-readable strings** (`Yes`, `No`, `Maybe`)
 
-1. Create and activate a Python virtual environment (recommended):
+---
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+## 🧹 Dataset
+
+**Dataset Used:** `Mental Health Dataset.csv`
+
+Each record includes the following attributes:
+
+| Feature         | Description                            |
+| --------------- | -------------------------------------- |
+| Gender          | Male / Female                          |
+| Country         | Country of residence                   |
+| Occupation      | Student / Employee / etc.              |
+| Days_Indoors    | Number of days typically spent indoors |
+| Work_Interest   | Target variable (Yes/No/Maybe)         |
+| Social_Weakness | Target variable (Yes/No/Maybe)         |
+
+---
+
+## ⚙️ Project Structure
+
+```
+📂 Mental_Health_Predictor
+ ├── Mental Health Dataset.csv
+ ├── desc.ipynb      # Jupyter notebook for training the model
+ ├── health_tester.joblib  # Saved trained model
+ ├── test.py   # Loads model and predicts based on user input
+ └── README.md
 ```
 
-2. Install dependencies:
+---
 
-```powershell
-pip install -r requirements.txt
+## 🧠 How It Works
+
+1. **Data Preparation:**
+
+   * Load dataset using `pandas.read_csv()`
+   * Split into input features (`X`) and target labels (`Y`)
+   * Convert categorical values into numeric codes using `LabelEncoder`
+
+2. **Model Training:**
+
+   * Create and train a `DecisionTreeClassifier` using Scikit-learn
+   * Save the trained model using `joblib.dump()`
+
+3. **Visualization:**
+
+   * Visualize the decision tree with `graphviz` for better understanding
+
+4. **Prediction Script:**
+
+   * Load the saved model (`joblib.load()`)
+   * Take user input (e.g., gender, country, etc.)
+   * Predict `Work_Interest` and `Social_Weakness`
+   * Print results as readable strings (`Yes`, `No`, `Maybe`)
+
+---
+
+## 💻 Example Usage
+
+Run the prediction file:
+
+```bash
+python predict_user_input.py
 ```
 
-3. (Optional) If working with notebooks, install Jupyter:
+Example interaction:
 
-```powershell
-pip install jupyterlab
-jupyter lab
+```
+Enter Gender: Male
+Enter Country: India
+Enter Occupation: Student
+Enter Days Indoors (0-5): 2
+Enter Mood Swings (0-5): 3
+
+Predicted Work Interest: Yes
+Predicted Social Weakness: Maybe
 ```
 
-## How to run
+---
 
-- To open the exploratory notebook, run Jupyter Lab or Notebook and open `desc.ipynb`.
-- To run the quick test script:
+## 🧮 Technologies Used
 
-```powershell
-python test.py
-```
+* Python 3
+* Pandas
+* Scikit-learn
+* Graphviz
+* Joblib
+* Jupyter Notebook
 
-- To load the saved model artifact from `health_tester.joblib` (example):
+---
 
-```python
-from joblib import load
-model = load('health_tester.joblib')
-# then use model.predict(X)
-```
+## 📈 Future Improvements
 
-## Notes and next steps
+* Add data validation for user input
+* Improve accuracy with more training data
+* Add a simple GUI using Tkinter or Streamlit
+* Integrate more mental health indicators
 
-- Add descriptions of the datasets and preprocessing steps in `desc.ipynb` or a dedicated `data/README.md`.
-- Provide clear training scripts that accept a `--train` or `--predict` flag.
-- Add a license and contribution guidelines if this repo will be shared.
+---
 
-## Contact
+## 🧑‍💻 Author
 
-If you need help reproducing results, open an issue with the commands you ran and the error output.
+**Ravi Raahul S R**
+B.Tech Information Technology
+Rajalakshmi Engineering College
+Project developed as part of the **Model Lab Exam**
+
+---
+
+## 🏁 License
+
+This project is for educational purposes only.
+Feel free to modify and experiment with the code for your own learning.
